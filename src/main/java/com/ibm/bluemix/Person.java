@@ -27,7 +27,7 @@ public class Person {
 	 * @param delimiter		defines the delimiter pattern that separates individual tokens 
 	 * 						in the input text string - refer {@link java.util.Scanner} for
 	 * 						definition of the delimiter pattern 
-	 * @throws PersonParseException
+	 * @throws PersonParseException if a parsing is encountered in the input text string
 	 */
 	public Person(String line, String[] lineElements, String delimiter) throws PersonParseException {
 		
