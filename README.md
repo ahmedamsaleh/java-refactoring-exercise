@@ -6,13 +6,20 @@
 # Build Instructions
 
 ## Compile
-mvn compile
+`mvn compile`
 
 ## Test
-mvn test
+`mvn test`
 
 ## Generate Javadocs
-mvn javadoc:javadoc
+`mvn javadoc:javadoc`
 
 ## Run
-java -cp ./target/classes com.ibm.bluemix.CandidateApp
+
+From the candidate-app directory, run:
+
+  `java -cp ./target/classes com.ibm.bluemix.CandidateApp`
+
+or
+
+  `mvn compile exec:java -Dexec.mainClass="com.ibm.bluemix.CandidateApp"`
