@@ -6,12 +6,15 @@
 # Build Instructions
 
 ## Compile
+
 `mvn compile`
 
 ## Test
+
 `mvn test`
 
 ## Generate Javadocs
+
 `mvn javadoc:javadoc`
 
 ## Run
