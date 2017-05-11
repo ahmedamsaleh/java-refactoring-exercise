@@ -16,9 +16,9 @@ import junit.framework.TestSuite;
  * Unit test for CandidateApp.
  */
 public class CandidateAppTest extends TestCase {
-	
+
 	private final ByteArrayOutputStream systemOutStream = new ByteArrayOutputStream();
-	
+
     /**
      * Create the test case
      *
