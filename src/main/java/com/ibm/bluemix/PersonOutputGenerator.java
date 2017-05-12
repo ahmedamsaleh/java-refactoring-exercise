@@ -24,7 +24,6 @@ class PersonOutputGenerator {
 
   static void generateOutput2(List<Person> personList) {
     personList.sort(new Comparator<Person>() {
-      // sort by DateOfBirth in ascending order, then by LastName in ascending order
       public int compare(Person p1, Person p2) {
         if(p1.getDateOfBirth().compareTo(p2.getDateOfBirth()) != 0) {
           return p1.getDateOfBirth().compareTo(p2.getDateOfBirth());
@@ -43,7 +42,6 @@ class PersonOutputGenerator {
 
   static void generateOutput3(List<Person> personList) {
     personList.sort(new Comparator<Person>() {
-      // sort by LastName in descending order
       public int compare(Person p1, Person p2) {
         return p2.getLastName().compareTo(p1.getLastName());
       }
