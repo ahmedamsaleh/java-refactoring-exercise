@@ -7,29 +7,14 @@ import junit.framework.TestSuite;
 import java.io.FileNotFoundException;
 import java.util.List;
 
-/**
- Unit test for Person.
- */
 public class PersonLoaderTest extends TestCase {
-  /**
-   Create the test case
-
-   @param testName name of the test case
-   */
   public PersonLoaderTest(String testName) {
     super(testName);
   }
-
-  /**
-   @return the suite of tests being tested
-   */
   public static Test suite() {
     return new TestSuite(PersonLoaderTest.class);
   }
 
-  /**
-   Test loading of space-delimited person file
-   */
   public void testSpace() throws FileNotFoundException {
     List<Person> personList = PersonLoader.loadPersonRecordsFromSpaceFile();
     assertEquals(3, personList.size());
@@ -38,9 +23,6 @@ public class PersonLoaderTest extends TestCase {
     assertEquals("Seles", personList.get(2).getLastName());
   }
 
-  /**
-   Test loading of pipe-delimited person file
-   */
   public void testPipe() throws FileNotFoundException {
     List<Person> personList = PersonLoader.loadPersonRecordsFromPipeFile();
     assertEquals(3, personList.size());
@@ -49,9 +31,6 @@ public class PersonLoaderTest extends TestCase {
     assertEquals("Bouillon", personList.get(2).getLastName());
   }
 
-  /**
-   Test loading of comma-delimited person file
-   */
   public void testComma() throws FileNotFoundException {
     List<Person> personList = PersonLoader.loadPersonRecordsFromCommaFile();
     assertEquals(3, personList.size());

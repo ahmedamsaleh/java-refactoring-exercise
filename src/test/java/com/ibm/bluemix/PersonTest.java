@@ -6,34 +6,20 @@ import junit.framework.TestSuite;
 
 import java.text.SimpleDateFormat;
 
-/**
- Unit test for Person.
- */
 public class PersonTest extends TestCase {
-  /**
-   Create the test case
-
-   @param testName name of the test case
-   */
   public PersonTest(String testName) {
     super(testName);
   }
-
-  /**
-   @return the suite of tests being tested
-   */
   public static Test suite() {
     return new TestSuite(PersonTest.class);
   }
 
-  /**
-   Test parsing of space-delimited records
-   */
   public void testSpace() throws PersonParseException {
     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
     String[] elements = {Person.LAST_NAME, Person.FIRST_NAME, Person.IGNORE,
         Person.GENDER, Person.DATE_OF_BIRTH, Person.COLOR};
+
     String delimiter = "\\s+";
 
     String input1 = "Kournikova Anna F F 6-3-1975 Red";
@@ -62,14 +48,12 @@ public class PersonTest extends TestCase {
     assertEquals("Black", person3.getColor());
   }
 
-  /**
-   Test parsing of pipe-delimited records
-   */
   public void testPipe() throws PersonParseException {
     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
     String[] elements = {Person.LAST_NAME, Person.FIRST_NAME, Person.IGNORE,
-        Person.GENDER, Person.COLOR, Person.DATE_OF_BIRTH};
+         Person.GENDER, Person.COLOR, Person.DATE_OF_BIRTH};
+    
     String delimiter = "\\s*\\|\\s*";
 
     String input1 = "Smith | Steve | D | M | Red | 3-3-1985";
@@ -98,14 +82,12 @@ public class PersonTest extends TestCase {
     assertEquals("Blue", person3.getColor());
   }
 
-  /**
-   Test parsing of comma-delimited records
-   */
   public void testComma() throws PersonParseException {
     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
     String[] elements = {Person.LAST_NAME, Person.FIRST_NAME, Person.GENDER,
         Person.COLOR, Person.DATE_OF_BIRTH};
+
     String delimiter = "\\s*,\\s*";
 
     String input1 = "Abercrombie, Neil, Male, Tan, 2/13/1943";
@@ -134,12 +116,10 @@ public class PersonTest extends TestCase {
     assertEquals("Pink", person3.getColor());
   }
 
-  /**
-   Test formatting of toString() output
-   */
   public void testToString() throws PersonParseException {
     String[] elements = {Person.LAST_NAME, Person.FIRST_NAME, Person.IGNORE,
         Person.GENDER, Person.DATE_OF_BIRTH, Person.COLOR};
+
     String delimiter = "\\s+";
 
     String input1 = "Kournikova Anna F F 6-3-1975 Red";
