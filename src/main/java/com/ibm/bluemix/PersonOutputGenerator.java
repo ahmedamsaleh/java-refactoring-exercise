@@ -4,15 +4,9 @@ import java.util.Comparator;
 import java.util.List;
 
 class PersonOutputGenerator {
-  private static void print(List<Person> personList, String heading) {
+  private static void print(List<Person> persons, String heading) {
     printHeading(heading);
-    printPersons(personList);
-  }
-
-  private static void printPersons(List<Person> personList) {
-    for(Person person : personList) {
-      System.out.println(person);
-    }
+    printPersons(persons);
   }
 
   private static void printHeading(String heading) {
@@ -20,11 +14,17 @@ class PersonOutputGenerator {
     System.out.println("");
   }
 
-  static void generateOutput(List<Person> personList, String heading,
-      Comparator<Person> comparator, Runnable spaceable) {
+  private static void printPersons(List<Person> persons) {
+    for(Person person : persons) {
+      System.out.println(person);
+    }
+  }
+
+  static void generateOutput(List<Person> persons, String heading,
+      Comparator<Person> sorter, Runnable insertSpace) {
     
-    personList.sort(comparator);
-    spaceable.run();
-    print(personList, heading);
+    persons.sort(sorter);
+    insertSpace.run();
+    print(persons, heading);
   }
 }
