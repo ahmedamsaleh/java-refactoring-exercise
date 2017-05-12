@@ -12,6 +12,7 @@ import java.nio.file.Files;
 import java.util.List;
 import java.util.Scanner;
 
+// this code looks like it is testing the scanner, which is a java util...
 public class CandidateAppTest extends TestCase {
   private final ByteArrayOutputStream systemOutStream = new ByteArrayOutputStream();
   public CandidateAppTest(String testName) {
