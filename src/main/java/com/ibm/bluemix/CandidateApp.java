@@ -61,9 +61,9 @@ public class CandidateApp {
       personList.addAll(PersonLoader.loadPersonRecordsFromPipeFile());
       personList.addAll(PersonLoader.loadPersonRecordsFromCommaFile());
 
-      PersonOutputGenerator.generateOutput1(personList, "Output 1:", genderThenLastName(), nullSpace());
-      PersonOutputGenerator.generateOutput2(personList, "Output 2:", dobThenLastName(), space());
-      PersonOutputGenerator.generateOutput3(personList, "Output 3:", lastNameDescending(), space());
+      PersonOutputGenerator.generateOutput(personList, "Output 1:", genderThenLastName(), nullSpace());
+      PersonOutputGenerator.generateOutput(personList, "Output 2:", dobThenLastName(), space());
+      PersonOutputGenerator.generateOutput(personList, "Output 3:", lastNameDescending(), space());
 
     }
     catch(FileNotFoundException e) {
