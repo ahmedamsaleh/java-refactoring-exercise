@@ -17,7 +17,8 @@ public class PersonOutputGenerator {
 			}
 		});
 		
-		System.out.println("Output 1:\n");
+		System.out.println("Output 1:");
+		System.out.println("");
 
 		for (Person person : personList) {
 			System.out.println(person);

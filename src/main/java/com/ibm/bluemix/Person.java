@@ -18,17 +18,7 @@ public class Person {
 	private Gender gender;
 	private Date dateOfBirth;
 	private String color;
-	
-	/**
-	 * Constructs a Person object by parsing a string that contains attributes for the Person.
-	 * 
-	 * @param line 			input text string
-	 * @param lineElements	ordering of the elements within the text string
-	 * @param delimiter		defines the delimiter pattern that separates individual tokens 
-	 * 						in the input text string - refer {@link java.util.Scanner} for
-	 * 						definition of the delimiter pattern 
-	 * @throws PersonParseException if a parsing is encountered in the input text string
-	 */
+
 	public Person(String line, String[] lineElements, String delimiter) throws PersonParseException {
 		
 		try (Scanner scanner = new Scanner(line)) {

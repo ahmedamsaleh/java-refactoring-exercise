@@ -7,44 +7,26 @@ import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.util.List;
 import java.util.Scanner;
-
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-/**
- * Unit test for CandidateApp.
- */
 public class CandidateAppTest extends TestCase {
-
 	private final ByteArrayOutputStream systemOutStream = new ByteArrayOutputStream();
-
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
     public CandidateAppTest(String testName) {
         super(testName);
     }
-
-    /**
-     * @return the suite of tests being tested
-     */
     public static Test suite() {
         return new TestSuite(CandidateAppTest.class);
     }
-    
-    /**
-     * Test app output correctness
-     * @throws IOException 
-     */
+
     public void testCandidateApp() throws IOException {
         System.setOut(new PrintStream(systemOutStream));
 
         CandidateApp.main(null);
         
-        List<String> expected = Files.readAllLines(FileSystems.getDefault().getPath("test-data", "output.txt"));
+        List<String> expected = Files.readAllLines(FileSystems.getDefault().getPath(
+                "test-data", "output.txt"));
         
         String systemOutContents = systemOutStream.toString();
         

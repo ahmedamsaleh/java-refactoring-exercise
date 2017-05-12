@@ -1,35 +1,18 @@
 package com.ibm.bluemix;
 
 import java.text.SimpleDateFormat;
-
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-/**
- * Unit test for Person.
- */
 public class PersonTest extends TestCase {
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
     public PersonTest(String testName) {
         super(testName);
     }
-
-    /**
-     * @return the suite of tests being tested
-     */
     public static Test suite() {
         return new TestSuite(PersonTest.class);
     }
 
-    /**
-     * Test parsing of space-delimited records
-     * @throws PersonParseException 
-     */
     public void testSpace() throws PersonParseException {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -62,11 +45,7 @@ public class PersonTest extends TestCase {
         assertEquals("1973-12-02", format.format(person3.getDateOfBirth()));
         assertEquals("Black", person3.getColor());
     }
-    
-    /**
-     * Test parsing of pipe-delimited records
-     * @throws PersonParseException 
-     */
+
     public void testPipe() throws PersonParseException {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -99,11 +78,7 @@ public class PersonTest extends TestCase {
         assertEquals("1975-06-03", format.format(person3.getDateOfBirth()));
         assertEquals("Blue", person3.getColor());
     }
-    
-    /**
-     * Test parsing of comma-delimited records
-     * @throws PersonParseException 
-     */
+
     public void testComma() throws PersonParseException {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -136,11 +111,7 @@ public class PersonTest extends TestCase {
         assertEquals("1959-07-12", format.format(person3.getDateOfBirth()));
         assertEquals("Pink", person3.getColor());
     }
-    
-    /**
-     * Test formatting of toString() output
-     * @throws PersonParseException 
-     */
+
     public void testToString()  throws PersonParseException {
     	String[] elements = { Person.LAST_NAME, Person.FIRST_NAME, Person.IGNORE, 
 				Person.GENDER, Person.DATE_OF_BIRTH, Person.COLOR };
