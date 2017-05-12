@@ -4,53 +4,36 @@ import java.util.Comparator;
 import java.util.List;
 
 class PersonOutputGenerator {
-  static void generateOutput1(List<Person> personList) {
-    personList.sort(new Comparator<Person>() {
-      public int compare(Person p1, Person p2) {
-        if(!p1.getGender().equals(p2.getGender())) {
-          return p1.getGender().compareTo(p2.getGender());
-        }
-
-        return p1.getLastName().compareTo(p2.getLastName());
-      }
-    });
-
-    System.out.println("Output 1:\n");
-
+  private static void printPersons(List<Person> personList) {
     for(Person person : personList) {
       System.out.println(person);
     }
   }
 
-  static void generateOutput2(List<Person> personList) {
-    personList.sort(new Comparator<Person>() {
-      public int compare(Person p1, Person p2) {
-        if(p1.getDateOfBirth().compareTo(p2.getDateOfBirth()) != 0) {
-          return p1.getDateOfBirth().compareTo(p2.getDateOfBirth());
-        }
-
-        return p1.getLastName().compareTo(p2.getLastName());
-      }
-    });
-
-    System.out.println("\nOutput 2:\n");
-
-    for(Person person : personList) {
-      System.out.println(person);
-    }
+  private static void printHeading(String heading) {
+    System.out.println(heading);
+    System.out.println("");
   }
 
-  static void generateOutput3(List<Person> personList) {
-    personList.sort(new Comparator<Person>() {
-      public int compare(Person p1, Person p2) {
-        return p2.getLastName().compareTo(p1.getLastName());
-      }
-    });
+  static void generateOutput1(List<Person> personList, String heading, Comparator<Person> comparator, Runnable spaceable) {
+    personList.sort(comparator);
+    spaceable.run();
+    print(personList, heading);
+  }
 
-    System.out.println("\nOutput 3:\n");
+  static void generateOutput2(List<Person> personList, String heading, Comparator<Person> comparator,
+      Runnable spaceable) {
+    generateOutput3(personList, heading, comparator, spaceable);
+  }
 
-    for(Person person : personList) {
-      System.out.println(person);
-    }
+  static void generateOutput3(List<Person> personList, String heading, Comparator<Person> comparator, Runnable spaceable) {
+    personList.sort(comparator);
+    spaceable.run();
+    print(personList, heading);
+  }
+
+  private static void print(List<Person> personList, String heading) {
+    printHeading(heading);
+    printPersons(personList);
   }
 }
