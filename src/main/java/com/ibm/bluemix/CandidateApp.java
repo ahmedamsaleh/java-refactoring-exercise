@@ -9,16 +9,22 @@ public class CandidateApp {
 		List<Person> personList = new ArrayList<Person>();
 		
 		try {
-			personList.addAll(PersonLoader.loadPersonRecordsFromSpaceFile());
-			personList.addAll(PersonLoader.loadPersonRecordsFromPipeFile());
-			personList.addAll(PersonLoader.loadPersonRecordsFromCommaFile());
-			
-			PersonOutputGenerator.generateOutput1(personList);
-			PersonOutputGenerator.generateOutput2(personList);
-			PersonOutputGenerator.generateOutput3(personList);
-			
+			populatePersonList(personList);
+			generatePersonOutput(personList);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+	}
+
+	private static void generatePersonOutput(List<Person> personList) {
+		PersonOutputGenerator.generateOutput1(personList);
+		PersonOutputGenerator.generateOutput2(personList);
+		PersonOutputGenerator.generateOutput3(personList);
+	}
+
+	private static void populatePersonList(List<Person> personList) throws FileNotFoundException {
+		personList.addAll(PersonLoader.loadPersonRecordsFromSpaceFile());
+		personList.addAll(PersonLoader.loadPersonRecordsFromPipeFile());
+		personList.addAll(PersonLoader.loadPersonRecordsFromCommaFile());
 	}
 }

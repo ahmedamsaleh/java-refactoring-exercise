@@ -1,5 +1,9 @@
 package com.ibm.bluemix;
 
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -7,10 +11,6 @@ import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.util.List;
 import java.util.Scanner;
-
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
 
 /**
  * Unit test for CandidateApp.
@@ -48,12 +48,10 @@ public class CandidateAppTest extends TestCase {
         
         String systemOutContents = systemOutStream.toString();
         
-        int i = 0;		
         try (Scanner scanner = new Scanner(systemOutContents)) {
-        	while (scanner.hasNextLine()) {
+        	for (int i = 0; scanner.hasNextLine(); i++) {
         		String line = scanner.nextLine();
         		assertEquals("Mismatched output on line " + (i + 1), expected.get(i), line);
-        		i++;
         	}
         }
         
