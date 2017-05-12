@@ -17,35 +17,35 @@ public class PersonTest extends TestCase {
   public void testSpace() throws PersonParseException {
     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
-    String[] elements = {Person.LAST_NAME, Person.FIRST_NAME, Person.IGNORE,
+    String[] fields = {Person.LAST_NAME, Person.FIRST_NAME, Person.IGNORE,
         Person.GENDER, Person.DATE_OF_BIRTH, Person.COLOR};
 
     String delimiter = "\\s+";
 
-    String input1 = "Kournikova Anna F F 6-3-1975 Red";
-    String input2 = "Hingis Martina M F 4-2-1979 Green";
-    String input3 = "Seles Monica H F 12-2-1973 Black";
+    String annaRaw = "Kournikova Anna F F 6-3-1975 Red";
+    String martinaRaw = "Hingis Martina M F 4-2-1979 Green";
+    String monicaRaw = "Seles Monica H F 12-2-1973 Black";
 
-    Person person1 = new Person(input1, elements, delimiter);
-    assertEquals("Anna", person1.getFirstName());
-    assertEquals("Kournikova", person1.getLastName());
-    assertEquals(Gender.FEMALE, person1.getGender());
-    assertEquals("1975-06-03", format.format(person1.getDateOfBirth()));
-    assertEquals("Red", person1.getColor());
+    Person anna = new Person(annaRaw, fields, delimiter);
+    assertEquals("Anna", anna.getFirstName());
+    assertEquals("Kournikova", anna.getLastName());
+    assertEquals(Gender.FEMALE, anna.getGender());
+    assertEquals("1975-06-03", format.format(anna.getDateOfBirth()));
+    assertEquals("Red", anna.getColor());
 
-    Person person2 = new Person(input2, elements, delimiter);
-    assertEquals("Martina", person2.getFirstName());
-    assertEquals("Hingis", person2.getLastName());
-    assertEquals(Gender.FEMALE, person2.getGender());
-    assertEquals("1979-04-02", format.format(person2.getDateOfBirth()));
-    assertEquals("Green", person2.getColor());
+    Person martina = new Person(martinaRaw, fields, delimiter);
+    assertEquals("Martina", martina.getFirstName());
+    assertEquals("Hingis", martina.getLastName());
+    assertEquals(Gender.FEMALE, martina.getGender());
+    assertEquals("1979-04-02", format.format(martina.getDateOfBirth()));
+    assertEquals("Green", martina.getColor());
 
-    Person person3 = new Person(input3, elements, delimiter);
-    assertEquals("Monica", person3.getFirstName());
-    assertEquals("Seles", person3.getLastName());
-    assertEquals(Gender.FEMALE, person3.getGender());
-    assertEquals("1973-12-02", format.format(person3.getDateOfBirth()));
-    assertEquals("Black", person3.getColor());
+    Person monica = new Person(monicaRaw, fields, delimiter);
+    assertEquals("Monica", monica.getFirstName());
+    assertEquals("Seles", monica.getLastName());
+    assertEquals(Gender.FEMALE, monica.getGender());
+    assertEquals("1973-12-02", format.format(monica.getDateOfBirth()));
+    assertEquals("Black", monica.getColor());
   }
 
   public void testPipe() throws PersonParseException {
@@ -56,30 +56,30 @@ public class PersonTest extends TestCase {
     
     String delimiter = "\\s*\\|\\s*";
 
-    String input1 = "Smith | Steve | D | M | Red | 3-3-1985";
-    String input2 = "Bonk | Radek | S | M | Green | 6-3-1975";
-    String input3 = "Bouillon | Francis | G | M | Blue | 6-3-1975";
+    String steveRaw = "Smith | Steve | D | M | Red | 3-3-1985";
+    String radekRaw = "Bonk | Radek | S | M | Green | 6-3-1975";
+    String francisRaw = "Bouillon | Francis | G | M | Blue | 6-3-1975";
 
-    Person person1 = new Person(input1, elements, delimiter);
-    assertEquals("Steve", person1.getFirstName());
-    assertEquals("Smith", person1.getLastName());
-    assertEquals(Gender.MALE, person1.getGender());
-    assertEquals("1985-03-03", format.format(person1.getDateOfBirth()));
-    assertEquals("Red", person1.getColor());
+    Person steve = new Person(steveRaw, elements, delimiter);
+    assertEquals("Steve", steve.getFirstName());
+    assertEquals("Smith", steve.getLastName());
+    assertEquals(Gender.MALE, steve.getGender());
+    assertEquals("1985-03-03", format.format(steve.getDateOfBirth()));
+    assertEquals("Red", steve.getColor());
 
-    Person person2 = new Person(input2, elements, delimiter);
-    assertEquals("Radek", person2.getFirstName());
-    assertEquals("Bonk", person2.getLastName());
-    assertEquals(Gender.MALE, person2.getGender());
-    assertEquals("1975-06-03", format.format(person2.getDateOfBirth()));
-    assertEquals("Green", person2.getColor());
+    Person radek = new Person(radekRaw, elements, delimiter);
+    assertEquals("Radek", radek.getFirstName());
+    assertEquals("Bonk", radek.getLastName());
+    assertEquals(Gender.MALE, radek.getGender());
+    assertEquals("1975-06-03", format.format(radek.getDateOfBirth()));
+    assertEquals("Green", radek.getColor());
 
-    Person person3 = new Person(input3, elements, delimiter);
-    assertEquals("Francis", person3.getFirstName());
-    assertEquals("Bouillon", person3.getLastName());
-    assertEquals(Gender.MALE, person3.getGender());
-    assertEquals("1975-06-03", format.format(person3.getDateOfBirth()));
-    assertEquals("Blue", person3.getColor());
+    Person francis = new Person(francisRaw, elements, delimiter);
+    assertEquals("Francis", francis.getFirstName());
+    assertEquals("Bouillon", francis.getLastName());
+    assertEquals(Gender.MALE, francis.getGender());
+    assertEquals("1975-06-03", format.format(francis.getDateOfBirth()));
+    assertEquals("Blue", francis.getColor());
   }
 
   public void testComma() throws PersonParseException {
@@ -90,30 +90,30 @@ public class PersonTest extends TestCase {
 
     String delimiter = "\\s*,\\s*";
 
-    String input1 = "Abercrombie, Neil, Male, Tan, 2/13/1943";
-    String input2 = "Bishop, Timothy, Male, Yellow, 4/23/1967";
-    String input3 = "Kelly, Sue, Female, Pink, 7/12/1959";
+    String neilRaw = "Abercrombie, Neil, Male, Tan, 2/13/1943";
+    String timothyRaw = "Bishop, Timothy, Male, Yellow, 4/23/1967";
+    String sueRaw = "Kelly, Sue, Female, Pink, 7/12/1959";
 
-    Person person1 = new Person(input1, elements, delimiter);
-    assertEquals("Neil", person1.getFirstName());
-    assertEquals("Abercrombie", person1.getLastName());
-    assertEquals(Gender.MALE, person1.getGender());
-    assertEquals("1943-02-13", format.format(person1.getDateOfBirth()));
-    assertEquals("Tan", person1.getColor());
+    Person neil = new Person(neilRaw, elements, delimiter);
+    assertEquals("Neil", neil.getFirstName());
+    assertEquals("Abercrombie", neil.getLastName());
+    assertEquals(Gender.MALE, neil.getGender());
+    assertEquals("1943-02-13", format.format(neil.getDateOfBirth()));
+    assertEquals("Tan", neil.getColor());
 
-    Person person2 = new Person(input2, elements, delimiter);
-    assertEquals("Timothy", person2.getFirstName());
-    assertEquals("Bishop", person2.getLastName());
-    assertEquals(Gender.MALE, person2.getGender());
-    assertEquals("1967-04-23", format.format(person2.getDateOfBirth()));
-    assertEquals("Yellow", person2.getColor());
+    Person timothy = new Person(timothyRaw, elements, delimiter);
+    assertEquals("Timothy", timothy.getFirstName());
+    assertEquals("Bishop", timothy.getLastName());
+    assertEquals(Gender.MALE, timothy.getGender());
+    assertEquals("1967-04-23", format.format(timothy.getDateOfBirth()));
+    assertEquals("Yellow", timothy.getColor());
 
-    Person person3 = new Person(input3, elements, delimiter);
-    assertEquals("Sue", person3.getFirstName());
-    assertEquals("Kelly", person3.getLastName());
-    assertEquals(Gender.FEMALE, person3.getGender());
-    assertEquals("1959-07-12", format.format(person3.getDateOfBirth()));
-    assertEquals("Pink", person3.getColor());
+    Person sue = new Person(sueRaw, elements, delimiter);
+    assertEquals("Sue", sue.getFirstName());
+    assertEquals("Kelly", sue.getLastName());
+    assertEquals(Gender.FEMALE, sue.getGender());
+    assertEquals("1959-07-12", format.format(sue.getDateOfBirth()));
+    assertEquals("Pink", sue.getColor());
   }
 
   public void testToString() throws PersonParseException {
@@ -122,17 +122,17 @@ public class PersonTest extends TestCase {
 
     String delimiter = "\\s+";
 
-    String input1 = "Kournikova Anna F F 6-3-1975 Red";
-    String input2 = "Hingis Martina M F 4-2-1979 Green";
-    String input3 = "Seles Monica H F 12-2-1973 Black";
+    String annaRaw = "Kournikova Anna F F 6-3-1975 Red";
+    String martinaRaw = "Hingis Martina M F 4-2-1979 Green";
+    String monicaRaw = "Seles Monica H F 12-2-1973 Black";
 
-    Person person1 = new Person(input1, elements, delimiter);
-    assertEquals("Kournikova Anna Female 6/3/1975 Red", person1.toString());
+    Person anna = new Person(annaRaw, elements, delimiter);
+    assertEquals("Kournikova Anna Female 6/3/1975 Red", anna.toString());
 
-    Person person2 = new Person(input2, elements, delimiter);
-    assertEquals("Hingis Martina Female 4/2/1979 Green", person2.toString());
+    Person martina = new Person(martinaRaw, elements, delimiter);
+    assertEquals("Hingis Martina Female 4/2/1979 Green", martina.toString());
 
-    Person person3 = new Person(input3, elements, delimiter);
-    assertEquals("Seles Monica Female 12/2/1973 Black", person3.toString());
+    Person monica = new Person(monicaRaw, elements, delimiter);
+    assertEquals("Seles Monica Female 12/2/1973 Black", monica.toString());
   }
 }
