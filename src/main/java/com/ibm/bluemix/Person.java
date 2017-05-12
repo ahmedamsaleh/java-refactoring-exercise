@@ -6,122 +6,114 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class Person {
-	public final static String FIRST_NAME = "firstName";
-	public final static String LAST_NAME = "lastName";
-	public final static String GENDER = "gender";
-	public final static String DATE_OF_BIRTH = "dateOfBirth";
-	public final static String COLOR = "color";
-	public final static String IGNORE = "ignore";
-	
-	private String firstName;
-	private String lastName;
-	private Gender gender;
-	private Date dateOfBirth;
-	private String color;
-	
-	/**
-	 * Constructs a Person object by parsing a string that contains attributes for the Person.
-	 * 
-	 * @param line 			input text string
-	 * @param lineElements	ordering of the elements within the text string
-	 * @param delimiter		defines the delimiter pattern that separates individual tokens 
-	 * 						in the input text string - refer {@link java.util.Scanner} for
-	 * 						definition of the delimiter pattern 
-	 * @throws PersonParseException if a parsing is encountered in the input text string
-	 */
-	public Person(String line, String[] lineElements, String delimiter) throws PersonParseException {
-		
-		try (Scanner scanner = new Scanner(line)) {
-			scanner.useDelimiter(delimiter);
-			int i = 0;
+  final static String FIRST_NAME = "firstName";
+  final static String LAST_NAME = "lastName";
+  final static String GENDER = "gender";
+  final static String DATE_OF_BIRTH = "dateOfBirth";
+  final static String COLOR = "color";
+  final static String IGNORE = "ignore";
 
-			while (scanner.hasNext()) {
-				String token = scanner.next();
+  private String firstName;
+  private String lastName;
+  private Gender gender;
+  private Date dateOfBirth;
+  private String color;
 
-				switch (lineElements[i++]) {
+  String getFirstName() {
+    return firstName;
+  }
+  String getLastName() {
+    return lastName;
+  }
+  Gender getGender() {
+    return gender;
+  }
+  Date getDateOfBirth() {
+    return dateOfBirth;
+  }
+  String getColor() {
+    return color;
+  }
 
-				case FIRST_NAME:
-					firstName = token;
-					break;
+  Person(String line, String[] lineElements, String delimiter)
+      throws PersonParseException {
 
-				case LAST_NAME:
-					lastName = token;
-					break;
+    try(Scanner scanner = new Scanner(line)) {
+      scanner.useDelimiter(delimiter);
+      int i = 0;
 
-				case GENDER:
-					if (token.startsWith("M")) {
-						gender = Gender.MALE;
-					} else if (token.startsWith("F")) {
-						gender = Gender.FEMALE;
-					} else {
-						throw new PersonParseException("Invalid gender encountered");
-					}
-					break;
+      while(scanner.hasNext()) {
+        String token = scanner.next();
 
-				case DATE_OF_BIRTH:
-					SimpleDateFormat format = null;
+        switch(lineElements[i++]) {
 
-					if (token.contains("/")) {
-						format = new SimpleDateFormat("MM/dd/yyyy");
-					} else if (token.contains("-")) {
-						format = new SimpleDateFormat("MM-dd-yyyy");
-					} else {
-						throw new PersonParseException("Invalid date encountered");
-					}
+          case FIRST_NAME:
+            firstName = token;
+            break;
 
-					try {
-						dateOfBirth = format.parse(token);
-					} catch (ParseException e) {
-						throw new PersonParseException("Invalid date encountered");
-					}
-					break;
+          case LAST_NAME:
+            lastName = token;
+            break;
 
-				case COLOR:
-					color = token;
-					break;
+          case GENDER:
+            if(token.startsWith("M")) {
+              gender = Gender.MALE;
+            }
+            else if(token.startsWith("F")) {
+              gender = Gender.FEMALE;
+            }
+            else {
+              throw new PersonParseException("Invalid gender encountered");
+            }
+            break;
 
-				default:
-					break;
-				}
-			}
-	    }
-	}
+          case DATE_OF_BIRTH:
+            SimpleDateFormat format = null;
 
-	public String getFirstName() {
-		return firstName;
-	}
+            if(token.contains("/")) {
+              format = new SimpleDateFormat("MM/dd/yyyy");
+            }
+            else if(token.contains("-")) {
+              format = new SimpleDateFormat("MM-dd-yyyy");
+            }
+            else {
+              throw new PersonParseException("Invalid date encountered");
+            }
 
-	public String getLastName() {
-		return lastName;
-	}
+            try {
+              dateOfBirth = format.parse(token);
+            }
+            catch(ParseException e) {
+              throw new PersonParseException("Invalid date encountered");
+            }
+            break;
 
-	public Gender getGender() {
-		return gender;
-	}
+          case COLOR:
+            color = token;
+            break;
 
-	public Date getDateOfBirth() {
-		return dateOfBirth;
-	}
+          default:
+            break;
+        }
+      }
+    }
+  }
 
-	public String getColor() {
-		return color;
-	}
-	
-	@Override
-	public String toString() {
-		SimpleDateFormat format = new SimpleDateFormat("M/d/yyyy");
+  @Override
+  public String toString() {
+    SimpleDateFormat format = new SimpleDateFormat("M/d/yyyy");
 
-		StringBuilder sb = new StringBuilder();
-		sb.append(lastName);
-		sb.append(" ");
-		sb.append(firstName);
-		sb.append(" ");
-		sb.append(gender);
-		sb.append(" ");
-		sb.append(format.format(dateOfBirth));
-		sb.append(" ");
-		sb.append(color);
-		
-		return sb.toString();
-	}
+    StringBuilder sb = new StringBuilder();
+    sb.append(lastName);
+    sb.append(" ");
+    sb.append(firstName);
+    sb.append(" ");
+    sb.append(gender);
+    sb.append(" ");
+    sb.append(format.format(dateOfBirth));
+    sb.append(" ");
+    sb.append(color);
+
+    return sb.toString();
+  }
 }
