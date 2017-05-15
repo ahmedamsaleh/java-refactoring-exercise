@@ -6,12 +6,12 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class Person {
-	public final static String FIRST_NAME = "firstName";
-	public final static String LAST_NAME = "lastName";
-	public final static String GENDER = "gender";
-	public final static String DATE_OF_BIRTH = "dateOfBirth";
-	public final static String COLOR = "color";
-	public final static String IGNORE = "ignore";
+	final static String FIRST_NAME = "firstName";
+	final static String LAST_NAME = "lastName";
+	final static String GENDER = "gender";
+	final static String DATE_OF_BIRTH = "dateOfBirth";
+	final static String COLOR = "color";
+	final static String IGNORE = "ignore";
 	
 	private String firstName;
 	private String lastName;
@@ -19,8 +19,7 @@ public class Person {
 	private Date dateOfBirth;
 	private String color;
 
-	public Person(String line, String[] lineElements, String delimiter) throws PersonParseException {
-		
+	Person(String line, String[] lineElements, String delimiter) throws PersonParseException {
 		try (Scanner scanner = new Scanner(line)) {
 			scanner.useDelimiter(delimiter);
 			int i = 0;
@@ -29,15 +28,12 @@ public class Person {
 				String token = scanner.next();
 
 				switch (lineElements[i++]) {
-
 				case FIRST_NAME:
 					firstName = token;
 					break;
-
 				case LAST_NAME:
 					lastName = token;
 					break;
-
 				case GENDER:
 					if (token.startsWith("M")) {
 						gender = Gender.MALE;
@@ -47,10 +43,8 @@ public class Person {
 						throw new PersonParseException("Invalid gender encountered");
 					}
 					break;
-
 				case DATE_OF_BIRTH:
-					SimpleDateFormat format = null;
-
+					SimpleDateFormat format;
 					if (token.contains("/")) {
 						format = new SimpleDateFormat("MM/dd/yyyy");
 					} else if (token.contains("-")) {
@@ -58,18 +52,15 @@ public class Person {
 					} else {
 						throw new PersonParseException("Invalid date encountered");
 					}
-
 					try {
 						dateOfBirth = format.parse(token);
 					} catch (ParseException e) {
 						throw new PersonParseException("Invalid date encountered");
 					}
 					break;
-
 				case COLOR:
 					color = token;
 					break;
-
 				default:
 					break;
 				}
@@ -77,41 +68,32 @@ public class Person {
 	    }
 	}
 
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public String getLastName() {
+	String getFirstName() {return firstName;}
+	String getLastName() {
 		return lastName;
 	}
-
-	public Gender getGender() {
+	Gender getGender() {
 		return gender;
 	}
-
-	public Date getDateOfBirth() {
+	Date getDateOfBirth() {
 		return dateOfBirth;
 	}
-
-	public String getColor() {
+	String getColor() {
 		return color;
 	}
 	
 	@Override
 	public String toString() {
 		SimpleDateFormat format = new SimpleDateFormat("M/d/yyyy");
-
-		StringBuilder sb = new StringBuilder();
-		sb.append(lastName);
-		sb.append(" ");
-		sb.append(firstName);
-		sb.append(" ");
-		sb.append(gender);
-		sb.append(" ");
-		sb.append(format.format(dateOfBirth));
-		sb.append(" ");
-		sb.append(color);
-		
-		return sb.toString();
+		String sb = lastName +
+				" " +
+				firstName +
+				" " +
+				gender +
+				" " +
+				format.format(dateOfBirth) +
+				" " +
+				color;
+		return sb;
 	}
 }
