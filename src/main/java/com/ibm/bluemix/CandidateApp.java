@@ -22,9 +22,9 @@ public class CandidateApp {
 					new String[]{ Person.LAST_NAME, Person.FIRST_NAME, Person.GENDER,
                             Person.COLOR, Person.DATE_OF_BIRTH }));
 			
-			PersonOutputGenerator.generateOutput1(personList);
-			PersonOutputGenerator.generateOutput2(personList);
-			PersonOutputGenerator.generateOutput3(personList);
+			PersonOutputGenerator.generateOutput(personList, "Output 1:");
+			PersonOutputGenerator.generateOutput(personList, "Output 2:");
+			PersonOutputGenerator.generateOutput(personList, "Output 3:");
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
