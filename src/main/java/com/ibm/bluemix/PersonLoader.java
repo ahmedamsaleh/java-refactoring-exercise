@@ -6,32 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 class PersonLoader {
-  static List<Person> loadPersonRecordsFromSpaceFile() throws java.io.FileNotFoundException {
-    String inputFilePath = "./data/space.txt";
-    String[] elements = {Person.LAST_NAME, Person.FIRST_NAME, Person.IGNORE, Person.GENDER, Person.DATE_OF_BIRTH, Person.COLOR};
-    String delimiter = "\\s+";
-
-    return loadPersonRecords(inputFilePath, elements, delimiter);
-  }
-
-  static List<Person> loadPersonRecordsFromPipeFile() throws java.io.FileNotFoundException {
-    String inputFilePath = "./data/pipe.txt";
-    String[] elements = {Person.LAST_NAME, Person.FIRST_NAME, Person.IGNORE, Person.GENDER, Person.COLOR, Person.DATE_OF_BIRTH};
-    String delimiter = "\\s*\\|\\s*";
-
-    return loadPersonRecords(inputFilePath, elements, delimiter);
-  }
-
-  static List<Person> loadPersonRecordsFromCommaFile() throws java.io.FileNotFoundException {
-    String inputFilePath = "./data/comma.txt";
-    String[] elements = {Person.LAST_NAME, Person.FIRST_NAME, Person.GENDER, Person.COLOR, Person.DATE_OF_BIRTH};
-    String delimiter = "\\s*,\\s*";
-
-    return loadPersonRecords(inputFilePath, elements, delimiter);
-  }
-
-
-  private static List<Person> loadPersonRecords(String inputFilePath, String[] elements, String delimiter) throws java.io.FileNotFoundException {
+  static List<Person> loadPersonRecords(String inputFilePath, String[] elements, String delimiter) throws java.io.FileNotFoundException {
     List<Person> personList = new ArrayList<Person>();
 
     try(Scanner scanner = new Scanner(new File(inputFilePath))) {
