@@ -12,11 +12,11 @@ public class CandidateApp {
 			personList.addAll(PersonLoader.loadPersonRecordsFromSpaceFile());
 			personList.addAll(PersonLoader.loadPersonRecordsFromPipeFile());
 			personList.addAll(PersonLoader.loadPersonRecordsFromCommaFile());
-			
+
 			PersonOutputGenerator.generateOutput1(personList);
 			PersonOutputGenerator.generateOutput2(personList);
 			PersonOutputGenerator.generateOutput3(personList);
-			
+
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
