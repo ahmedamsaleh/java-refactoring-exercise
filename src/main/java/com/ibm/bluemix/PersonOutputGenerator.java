@@ -4,8 +4,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class PersonOutputGenerator {
-  public static void generateOutput1(List<Person> personList) {
+class PersonOutputGenerator {
+  static void generateOutput1(List<Person> personList) {
     Collections.sort(personList, new Comparator<Person>() {
       // sort by Gender, then by LastName in ascending order
       public int compare(Person p1, Person p2) {
@@ -24,7 +24,7 @@ public class PersonOutputGenerator {
     }
   }
 
-  public static void generateOutput2(List<Person> personList) {
+  static void generateOutput2(List<Person> personList) {
     Collections.sort(personList, new Comparator<Person>() {
       // sort by DateOfBirth in ascending order, then by LastName in ascending order
       public int compare(Person p1, Person p2) {
@@ -43,7 +43,7 @@ public class PersonOutputGenerator {
     }
   }
 
-  public static void generateOutput3(List<Person> personList) {
+  static void generateOutput3(List<Person> personList) {
     Collections.sort(personList, new Comparator<Person>() {
       // sort by LastName in descending order
       public int compare(Person p1, Person p2) {

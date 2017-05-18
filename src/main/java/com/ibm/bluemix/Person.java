@@ -6,12 +6,12 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class Person {
-	public final static String FIRST_NAME = "firstName";
-	public final static String LAST_NAME = "lastName";
-	public final static String GENDER = "gender";
-	public final static String DATE_OF_BIRTH = "dateOfBirth";
-	public final static String COLOR = "color";
-	public final static String IGNORE = "ignore";
+	final static String FIRST_NAME = "firstName";
+	final static String LAST_NAME = "lastName";
+	final static String GENDER = "gender";
+	final static String DATE_OF_BIRTH = "dateOfBirth";
+	final static String COLOR = "color";
+	final static String IGNORE = "ignore";
 	
 	private String firstName;
 	private String lastName;
@@ -29,7 +29,7 @@ public class Person {
 	 * 						definition of the delimiter pattern 
 	 * @throws PersonParseException if a parsing is encountered in the input text string
 	 */
-	public Person(String line, String[] lineElements, String delimiter) throws PersonParseException {
+	Person(String line, String[] lineElements, String delimiter) throws PersonParseException {
 		
 		try (Scanner scanner = new Scanner(line)) {
 			scanner.useDelimiter(delimiter);
@@ -59,7 +59,7 @@ public class Person {
 					break;
 
 				case DATE_OF_BIRTH:
-					SimpleDateFormat format = null;
+					SimpleDateFormat format;
 
 					if (token.contains("/")) {
 						format = new SimpleDateFormat("MM/dd/yyyy");
@@ -87,23 +87,23 @@ public class Person {
 	    }
 	}
 
-	public String getFirstName() {
+	String getFirstName() {
 		return firstName;
 	}
 
-	public String getLastName() {
+	String getLastName() {
 		return lastName;
 	}
 
-	public Gender getGender() {
+	Gender getGender() {
 		return gender;
 	}
 
-	public Date getDateOfBirth() {
+	Date getDateOfBirth() {
 		return dateOfBirth;
 	}
 
-	public String getColor() {
+	String getColor() {
 		return color;
 	}
 	
@@ -111,17 +111,8 @@ public class Person {
 	public String toString() {
 		SimpleDateFormat format = new SimpleDateFormat("M/d/yyyy");
 
-		StringBuilder sb = new StringBuilder();
-		sb.append(lastName);
-		sb.append(" ");
-		sb.append(firstName);
-		sb.append(" ");
-		sb.append(gender);
-		sb.append(" ");
-		sb.append(format.format(dateOfBirth));
-		sb.append(" ");
-		sb.append(color);
-		
-		return sb.toString();
+		String sb = lastName + " " + firstName + " " + gender + " " + format.format(dateOfBirth) + " " + color;
+
+		return sb;
 	}
 }
