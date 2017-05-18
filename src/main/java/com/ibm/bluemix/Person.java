@@ -111,8 +111,6 @@ public class Person {
 	public String toString() {
 		SimpleDateFormat format = new SimpleDateFormat("M/d/yyyy");
 
-		String sb = lastName + " " + firstName + " " + gender + " " + format.format(dateOfBirth) + " " + color;
-
-		return sb;
+		return lastName + " " + firstName + " " + gender + " " + format.format(dateOfBirth) + " " + color;
 	}
 }
