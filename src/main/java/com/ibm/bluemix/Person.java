@@ -14,7 +14,6 @@ public class Person {
 	final static String IGNORE = "ignore";
 	
 	private String firstName;
-	
 	private String lastName;
 	private Gender gender;
 	private Date dateOfBirth;
